@@ -1,0 +1,7 @@
+{
+  "name": "Daruma8.3",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
