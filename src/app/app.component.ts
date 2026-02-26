@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
-  standalone: false,
+  standalone: false
 })
 export class AppComponent {
-  constructor() {}
+  public pages: Array<{titulo: string, color: string, componente: string, icon: string}> = [];
+
+  constructor(private storage: Storage) {
+    this.storage.create();
+  }
 }
