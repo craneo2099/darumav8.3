@@ -1,7 +1,8 @@
 {
-  "name": "Daruma8.3",
+  "name": "Daruma",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

@@ -11,13 +11,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="colorFondo ion-padding ">
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="12" size-md="8">
-      <ion-slides spaceBetween="10" pager="true" scrollbar="false" [options]="slideOpts">
+<ion-content class="colorFondo ion-padding">
+  <ion-row class="ion-justify-content-center" style="height: 100%">
+    <ion-col size="12" size-md="8" class="ion-align-items-stretch">
+      <swiper-container spaceBetween="10" pagination="true" scrollbar="false" [options]="slideOpts" class="ion-align-items-stretch" style="height: 100%;">
         <!-- Azul -->
-        <ion-slide >
-          <div class="slide">
+        <swiper-slide >
+          <div class="slide ion-text-justify ion-justify-content-center">
             <ion-text class="ion-text-center" color='azuldaruma'><h2 class="ion-no-margin"><b>Azul</b></h2></ion-text>
             <img src="{{this.darumasubi+'Darumas_azul_2.webp'}}" alt="Darumas_azul_2" class="w-70"/>
             <ion-text><p class="ion-no-margin">Nuestro <ion-label color="azuldaruma"><b>daruma azul</b></ion-label> es el símbolo de la seriedad con la que hacemos nuestros productos. Muestra gran frescura en su diseño.</p>
@@ -25,12 +25,12 @@
             </ion-text>  
             <ion-label color="azuldaruma"><hr class="solid"></ion-label>
             <ion-text class="ion-text-center" color='azuldaruma'><h3 class="ion-no-margin">Simboliza:</h3></ion-text>
-            <ion-text class="ion-margin-bottom"><p class="ion-no-margin "><b>Inteligencia y frescura</b></p></ion-text>
+            <ion-text class="ion-margin-bottom ion-text-center"><p class="ion-no-margin "><b>Inteligencia y frescura</b></p></ion-text>
             <ion-text class=""><ion-label  color="azuldaruma"><hr class="solid margenBajoPager"></ion-label></ion-text>
           </div>
-        </ion-slide>
+        </swiper-slide>
         <!-- Blanco -->
-        <ion-slide >
+        <swiper-slide >
           <div class="slide">
             <ion-text class="ion-text-center" color='medium'><h2 class="ion-no-margin"><b>Blanco</b></h2></ion-text>
             <img src="{{this.darumasubi+'Darumas_blanco_2.webp'}}" alt="Darumas_blanco_2" class="w-70"/>
@@ -39,12 +39,12 @@
             </ion-text>  
             <ion-label color="medium"><hr class="solid"></ion-label>
             <ion-text class="ion-text-center" color='medium'><h3 class="ion-no-margin">Simboliza:</h3></ion-text>
-            <ion-text class="ion-margin-bottom"><p class="ion-no-margin "><b>Pureza y paz</b></p></ion-text>
+            <ion-text class="ion-margin-bottom ion-text-center"><p class="ion-no-margin "><b>Pureza y paz</b></p></ion-text>
             <ion-label  color="medium"><hr class="solid"></ion-label>
           </div>
-        </ion-slide>
+        </swiper-slide>
         <!-- dorado -->
-        <ion-slide >
+        <swiper-slide >
           <div class="slide">
             <ion-text class="ion-text-center" color='doradodaruma'><h2 class="ion-no-margin"><b>Dorado</b></h2></ion-text>
             <img src="{{this.darumasubi+'Darumas_dorado_2.webp'}}" alt="Darumas_dorado_2" class="w-70"/>
@@ -53,12 +53,12 @@
             </ion-text>  
             <ion-label color="doradodaruma"><hr class="solid"></ion-label>
             <ion-text class="ion-text-center" color='doradodaruma'><h3 class="ion-no-margin">Simboliza:</h3></ion-text>
-            <ion-text class="ion-margin-bottom"><p class="ion-no-margin "><b>Riqueza y abundancia</b></p></ion-text>
+            <ion-text class="ion-margin-bottom ion-text-center"><p class="ion-no-margin "><b>Riqueza y abundancia</b></p></ion-text>
             <ion-label  color="doradodaruma"><hr class="solid"></ion-label>
           </div>
-        </ion-slide>
+        </swiper-slide>
         <!-- violeta -->
-        <ion-slide >
+        <swiper-slide >
           <div class="slide">
             <ion-text class="ion-text-center" color='liladaruma'><h2 class="ion-no-margin"><b>Violeta</b></h2></ion-text>
             <img src="{{this.darumasubi+'Darumas_lila_2.webp'}}" alt="Darumas_lila_2" class="w-70"/>
@@ -69,12 +69,12 @@
             </ion-text>  
             <ion-label color="liladaruma"><hr class="solid"></ion-label>
             <ion-text class="ion-text-center" color='liladaruma'><h3 class="ion-no-margin">Simboliza:</h3></ion-text>
-            <ion-text class="ion-margin-bottom"><p class="ion-no-margin "><b>Sofisticación, misterio y espiritualidad</b></p></ion-text>
+            <ion-text class="ion-margin-bottom ion-text-center"><p class="ion-no-margin "><b>Sofisticación, misterio y espiritualidad</b></p></ion-text>
             <ion-label  color="liladaruma"><hr class="solid"></ion-label>
           </div>
-        </ion-slide>
+        </swiper-slide>
         <!-- naranja -->
-        <ion-slide >
+        <swiper-slide >
           <div class="slide">
             <ion-text class="ion-text-center" color='naranjadaruma'><h2 class="ion-no-margin"><b>Naranja</b></h2></ion-text>
             <img src="{{this.darumasubi+'Darumas_naranja_2.webp'}}" alt="Darumas_naranja_2" class="w-70"/>
@@ -88,12 +88,12 @@
             </ion-text>  
             <ion-label color="naranjadaruma"><hr class="solid"></ion-label>
             <ion-text class="ion-text-center" color='naranjadaruma'><h3 class="ion-no-margin">Simboliza:</h3></ion-text>
-            <ion-text class="ion-margin-bottom"><p class="ion-no-margin "><b>Vitalidad y entusiasmo</b></p></ion-text>
+            <ion-text class="ion-margin-bottom ion-text-center"><p class="ion-no-margin "><b>Vitalidad y entusiasmo</b></p></ion-text>
             <ion-label  color="naranjadaruma"><hr class="solid"></ion-label>
           </div>
-        </ion-slide>
+        </swiper-slide>
         <!-- negro -->
-        <ion-slide >
+        <swiper-slide >
           <div class="slide">
             <ion-text class="ion-text-center" color='black'><h2 class="ion-no-margin"><b>Negro</b></h2></ion-text>
             <img src="{{this.darumasubi+'Darumas_negro_2.webp'}}" alt="Darumas_negro_2" class="w-70"/>
@@ -105,12 +105,12 @@
             </ion-text>  
             <ion-label color="black"><hr class="solid"></ion-label>
             <ion-text class="ion-text-center" color='black'><h3 class="ion-no-margin">Simboliza:</h3></ion-text>
-            <ion-text class="ion-margin-bottom"><p class="ion-no-margin "><b>Elegancia y prestigio</b></p></ion-text>
+            <ion-text class="ion-margin-bottom ion-text-center"><p class="ion-no-margin "><b>Elegancia y prestigio</b></p></ion-text>
             <ion-label  color="black"><hr class="solid"></ion-label>
           </div>
-        </ion-slide>
+        </swiper-slide>
         <!-- rojo -->
-        <ion-slide >
+        <swiper-slide >
           <div class="slide">
             <ion-text class="ion-text-center" color='rojodaruma'><h2 class="ion-no-margin"><b>Rojo</b></h2></ion-text>
             <img src="{{this.darumasubi+'Darumas_rojo_2.webp'}}" alt="Darumas_rojo_2" class="w-70"/>
@@ -124,12 +124,12 @@
             </ion-text>  
             <ion-label color="rojodaruma"><hr class="solid"></ion-label>
             <ion-text class="ion-text-center" color='rojodaruma'><h3 class="ion-no-margin">Simboliza:</h3></ion-text>
-            <ion-text class="ion-margin-bottom"><p class="ion-no-margin "><b>Pasión y poder</b></p></ion-text>
+            <ion-text class="ion-margin-bottom ion-text-center"><p class="ion-no-margin "><b>Pasión y poder</b></p></ion-text>
             <ion-label  color="rojodaruma"><hr class="solid"></ion-label>
           </div>
-        </ion-slide>
+        </swiper-slide>
         <!-- rosa -->
-        <ion-slide >
+        <swiper-slide >
           <div class="slide">
             <ion-text class="ion-text-center" color='rosadaruma'><h2 class="ion-no-margin"><b>Rosado</b></h2></ion-text>
             <img src="{{this.darumasubi+'Darumas_rosa_2.webp'}}" alt="Darumas_rosa_2" class="w-70"/>
@@ -144,12 +144,12 @@
             </ion-text>  
             <ion-label color="rosadaruma"><hr class="solid"></ion-label>
             <ion-text class="ion-text-center" color='rosadaruma'><h3 class="ion-no-margin">Simboliza:</h3></ion-text>
-            <ion-text class="ion-margin-bottom"><p class="ion-no-margin "><b>Amor y amistad</b></p></ion-text>
+            <ion-text class="ion-margin-bottom ion-text-center"><p class="ion-no-margin "><b>Amor y amistad</b></p></ion-text>
             <ion-label  color="rosadaruma"><hr class="solid"></ion-label>
           </div>
-        </ion-slide>
+        </swiper-slide>
         <!-- verde -->
-        <ion-slide >
+        <swiper-slide >
           <div class="slide">
             <ion-text class="ion-text-center" color='verdedaruma'><h2 class="ion-no-margin"><b>Verde</b></h2></ion-text>
             <img src="{{this.darumasubi+'Darumas_verde_2.webp'}}" alt="Darumas_verde_2" class="w-70"/>
@@ -163,11 +163,11 @@
             </ion-text>  
             <ion-label color="verdedaruma"><hr class="solid"></ion-label>
             <ion-text class="ion-text-center" color='verdedaruma'><h3 class="ion-no-margin">Simboliza:</h3></ion-text>
-            <ion-text class="ion-margin-bottom"><p class="ion-no-margin "><b>Progreso y bienestar</b></p></ion-text>
+            <ion-text class="ion-margin-bottom ion-text-center"><p class="ion-no-margin "><b>Progreso y bienestar</b></p></ion-text>
             <ion-label  color="verdedaruma"><hr class="solid"></ion-label>
           </div>
-        </ion-slide>
-      </ion-slides>
+        </swiper-slide>
+      </swiper-container>
     </ion-col>
   </ion-row>
   
