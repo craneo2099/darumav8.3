@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.devstarnovatech.Darumakoinobori',
   appName: 'Daruma',
   webDir: 'www',
   plugins: {
@@ -9,7 +9,7 @@ const config: CapacitorConfig = {
       launchShowDuration: 3000,
       launchAutoHide: true,
       backgroundColor: '#ffffff',
-      androidSplashResourceName: 'splash',
+      androidSplashResourceName: 'icono1',
       androidScaleType: 'CENTER_CROP',
       splashFullScreen: true,
       splashImmersive: true

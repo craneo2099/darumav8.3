@@ -9,6 +9,7 @@ import { DarumaService } from 'src/app/providers/daruma-service/daruma.service';
 import { Storage } from '@ionic/storage';
 import { Router} from '@angular/router';
 import { LogueadoGuard } from 'src/app/guards/logueado.guard';
+import { LocalNotifications } from '@capacitor/local-notifications';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
@@ -57,7 +58,16 @@ export class InicioLoginPage implements OnInit {
      }
 
   ngOnInit() {
+  }
 
+  async requestNotificationPermission() {
+    const permResult = await LocalNotifications.checkPermissions();
+    console.log('Estado actual de notificaciones:', permResult.display);
+    
+    if (permResult.display !== 'granted') {
+      const result = await LocalNotifications.requestPermissions();
+      console.log('Nuevo estado después de solicitar:', result.display);
+    }
   }
 
   async logForm(){
@@ -90,7 +100,7 @@ export class InicioLoginPage implements OnInit {
           pass: sha256.toString(CryptoJS.enc.Hex),
           zona: z
         }
-this.ds.doLogin(this.datosLogin)
+        this.ds.doLogin(this.datosLogin)
         .subscribe(data => {
           console.log("data login response:", data);
           if (data["response"]==false) {
@@ -99,7 +109,7 @@ this.ds.doLogin(this.datosLogin)
             // this.doAlert(error, data["message"])
             this.loader.dismiss();
             this.doAlert(error, "Usuario o contrase\u00F1a incorrecto")
-} else {
+            } else {
             this.storage.set('tokenS', data["result"]);
             this.storage.set('userS', this.loginForm.value.email)
             this.loader.dismiss().then(() => {
@@ -161,6 +171,7 @@ this.ds.doLogin(this.datosLogin)
    }
 
   async ionViewWillEnter() {
+    this.requestNotificationPermission();
     this.loader = await this.loadingCtrl.create();
     window.addEventListener('keyboardWillHide', () => {
       this.ngZone.run(() => {

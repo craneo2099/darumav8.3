@@ -42,9 +42,12 @@ async scheduleNotification(){
               id: 1,
               title: 'Tienes Darumas activos',
               body: '\u00A1Cumple tus prop\u00F3sitos!',
+              smallIcon: 'icno',
+              largeIcon: 'icono1',
               schedule: {
-                at: new Date(Date.now() + 60 * 60 * 1000),
-                repeats: true
+                at: new Date(Date.now() + 24 * 60 * 60 * 1000),
+                repeats: true,
+                every: 'day'
               }
             }
           ]
