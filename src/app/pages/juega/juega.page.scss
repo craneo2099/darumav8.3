@@ -1,0 +1,248 @@
+.juego-content {
+  --background: var(--ion-background-color, #f5f5f5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.contenedor-juego {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 450px;
+}
+
+.info-juego {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.info-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  justify-items: center;
+  margin-bottom: 0;
+}
+
+.carta {
+  aspect-ratio: 1;
+  perspective: 1000px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 100px;
+}
+
+.carta-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.carta.revelada .carta-inner,
+.carta.encontrada .carta-inner {
+  transform: rotateY(180deg);
+}
+
+.carta-frente,
+.carta-detras {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carta-frente {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.carta-frente img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.carta-detras {
+  transform: rotateY(180deg);
+  background: var(--ion-card-background, white);
+}
+
+.carta-detras img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+
+.carta.encontrada {
+  opacity: 0.7;
+}
+
+.victoria {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 90%;
+  max-width: 350px;
+}
+
+.victoria ion-card {
+  text-align: center;
+}
+
+.reiniciar-portrait {
+  width: 100%;
+  display: block;
+  margin-top: 20px;
+}
+
+.reiniciar-landscape {
+  display: none;
+}
+
+.btn-reiniciar {
+  height: 36px;
+  font-size: 14px;
+}
+
+/* Responsive para tablets y landscape */
+@media (min-width: 768px) {
+  .contenedor-juego {
+    max-width: 500px;
+  }
+
+  .carta {
+    max-width: 130px;
+  }
+
+  .info-juego {
+    font-size: 20px;
+  }
+}
+
+/* Landscape */
+@media (orientation: landscape) {
+  .juego-content {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .contenedor-juego {
+    width: 100%;
+    max-width: 700px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-juego {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 10px;
+    gap: 15px;
+  }
+
+  .info-texto {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .reiniciar-portrait {
+    display: none;
+  }
+
+  .reiniciar-landscape {
+    display: block;
+    width: auto;
+    min-width: 120px;
+  }
+
+  .btn-reiniciar {
+    margin-top: 0;
+  }
+
+  .tablero {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .carta {
+    max-width: 120px;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .carta {
+    max-width: 80px;
+  }
+
+  .info-juego {
+    font-size: 14px;
+  }
+
+  .tablero {
+    gap: 5px;
+  }
+}
+
+/* Tablets en landscape */
+@media (min-width: 768px) and (orientation: landscape) {
+  .contenedor-juego {
+    max-width: 800px;
+  }
+
+  .tablero {
+    max-width: 700px;
+    gap: 12px;
+  }
+
+  .carta {
+    max-width: 140px;
+  }
+
+  .info-juego {
+    font-size: 22px;
+    max-width: 700px;
+  }
+
+  .info-texto {
+    gap: 50px;
+  }
+
+  .reiniciar-landscape {
+    min-width: 150px;
+  }
+}
