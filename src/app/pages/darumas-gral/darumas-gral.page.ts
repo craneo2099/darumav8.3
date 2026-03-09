@@ -12,12 +12,12 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class DarumasGralPage implements OnInit {
   public userID: number;
-  darumas: any;
+  darumas: any[] = [];
   toki: string;
   public loader: any;
   public usuario;
-  public noDarumaFlag;
-  public darumasIncompletos: boolean;
+  public noDarumaFlag: boolean = false;
+  public darumasIncompletos: boolean = false;
 
   public url = "./../../../assets/imgs/colores/";
 
@@ -39,29 +39,36 @@ async scheduleNotification(){
         await LocalNotifications.schedule({
           notifications: [
             {
-              id: 1,
+              id: 100,
               title: 'Tienes Darumas activos',
-              body: '\u00A1Cumple tus prop\u00F3sitos!',
-              smallIcon: 'icno',
-              largeIcon: 'icono1',
+              body: '¡Cumple tus propósitos!',
+              sound: 'default',
               schedule: {
-                at: new Date(Date.now() + 24 * 60 * 60 * 1000),
                 repeats: true,
                 every: 'day'
               }
             }
           ]
         });
+        //console.log('Notificación programada para cada 24 horas');
       } else {
-        console.log('Permiso de Notificaiones denegado')
+        console.log('Permiso de Notificaciones denegado');
       }
     }
   }
 
-  async verficaNotiYBorra(){
-    const pending = await LocalNotifications.getPending();
-    if (pending.notifications.length > 0) {
-      await LocalNotifications.cancel({ notifications: pending.notifications });
+  async verficaNotiYBorra(): Promise<void> {
+    try {
+      const pending = await LocalNotifications.getPending();
+      console.log('Notificaciones pendientes antes de cancelar:', pending.notifications.length);
+      if (pending.notifications.length > 0) {
+        const ids = pending.notifications.map(n => n.id);
+        console.log('IDs a cancelar:', ids);
+        await LocalNotifications.cancel({ notifications: ids.map(id => ({ id })) });
+        console.log('Notificaciones canceladas');
+      }
+    } catch (e) {
+      console.log('Error al verificar notificaciones:', e);
     }
   }
 
@@ -103,24 +110,31 @@ async scheduleNotification(){
   async cargaDarumasLst(){
     this.loader = await this.loadingCtrl.create();
     await this.loader.present();
-    // mandar llamar servicio para traer darumas
-    //se deshabilita llamar al token
-    // this.ds.getToken().then((token)=>{
-    //   this.toki = token
-      this.ds.getDarumas(this.toki).subscribe(daruma =>{
-        // console.log("EntraGetDarumas", daruma );
+    this.darumasIncompletos = false;
+    this.ds.getDarumas(this.toki).subscribe(daruma =>{
         if (daruma["result"].length == 0) {
           this.noDarumaFlag = true;
         }
-        daruma["result"].forEach(element => {
-          // console.log("qr ",element);
-          // elige color daruma
-          this.darumas.push(element)
-          if (element["estado"] == 6 && this.darumasIncompletos == false) {
-            this.darumasIncompletos = true;
-            this.scheduleNotification();
-          }
+        const darumasRaw = daruma["result"];
+        //console.log('Darumas crudos:', darumasRaw);
+        
+        // Ordenar: activos primero (estado 6), luego completados (estado 8)
+        // Dentro de cada grupo, más reciente primero
+        const activos = darumasRaw.filter(d => d.estado == 6).sort((a, b) => {
+          return new Date(b.fechaInicio).getTime() - new Date(a.fechaInicio).getTime();
         });
+        const completados = darumasRaw.filter(d => d.estado == 8).sort((a, b) => {
+          return new Date(b.fechaCompletado).getTime() - new Date(a.fechaCompletado).getTime();
+        });
+        
+        console.log('Activos:', activos.length, 'Completados:', completados.length);
+        
+        this.darumas = [...activos, ...completados];
+        
+        if (activos.length > 0) {
+          this.darumasIncompletos = true;
+          this.scheduleNotification();
+        }
       }, error => {
         this.loader.dismiss();
         console.log("Error getDarumas", error);
@@ -215,17 +229,10 @@ async scheduleNotification(){
     this.noDarumaFlag = false;
     this.darumasIncompletos = false;
     this.verficaNotiYBorra();
-
-    
   }
 
   ionViewDidEnter(){
     this.verificaToken();
-    // console.log("tokiiiiii ", this.toki);
-    // if (this.toki != null) {
-    //   this.darumas = [];
-    //   this.cargaDarumasLst();
-    // }
   }
 
   async ionViewDidLeave(){

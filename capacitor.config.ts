@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.devstarnovatech.Darumakoinobori',
-  appName: 'Daruma',
+  appId: 'com.devstarnovatech.darumakoinobor',
+  appName: 'Daruma Koinobori',
   webDir: 'www',
   plugins: {
     SplashScreen: {
