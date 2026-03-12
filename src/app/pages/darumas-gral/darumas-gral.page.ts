@@ -113,13 +113,16 @@ async scheduleNotification(){
           this.noDarumaFlag = true;
         }
         daruma["result"].forEach(element => {
-          // console.log("qr ",element);
-          // elige color daruma
           this.darumas.push(element)
           if (element["estado"] == 6 && this.darumasIncompletos == false) {
             this.darumasIncompletos = true;
             this.scheduleNotification();
           }
+        });
+        this.darumas.sort((a, b) => {
+          if (a.estado === 6 && b.estado !== 6) return -1;
+          if (a.estado !== 6 && b.estado === 6) return 1;
+          return new Date(b.fechaInicio).getTime() - new Date(a.fechaInicio).getTime();
         });
       }, error => {
         this.loader.dismiss();
