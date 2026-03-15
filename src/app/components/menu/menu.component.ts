@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
         {titulo: 'Acerca de', color: "azul", componente: '/acerca', icon: 'information-circle'},
         {titulo: "Ajustes", color: "azul", componente: '/ajustes', icon: "settings"},
         {titulo: "Los Colores", color: "naranjadaruma", componente: '/colores', icon: "color-palette-outline"},
-        //{titulo: "Juega", color: "azul", componente: '/juega', icon: "game-controller-outline"},
+        {titulo: "Juega", color: "azul", componente: '/juega', icon: "game-controller-outline"},
         {titulo: "Salir", color: "rosados", componente: '', icon: "log-out"}
     ]    
   }
